@@ -1,0 +1,13 @@
+{
+    "name": "alex/ishop2.loc",
+    "description": "ishop2.loc",
+    "autoload": {
+        "psr-4": {
+            "ishop\\": "vendor/ishop/core",
+            "app\\": "app"
+        }
+    },
+    "require": {
+            "gabordemooij/redbean": "dev-master"
+    }
+}
