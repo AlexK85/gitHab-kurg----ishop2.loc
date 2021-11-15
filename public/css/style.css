@@ -3191,10 +3191,14 @@ h3.ghj {
 }
 /*--media-quaries-end-here--*/
 
-
-
 /* new styles */
 
 .product-one > .product-left {
   margin-bottom: 20px;
 }
+
+.quantity{
+  margin-top: 3em;
+  margin-right: 10px;
+  float: left;
+} 
