@@ -15,7 +15,7 @@
 		<div class="container">
 			<div class="single-main">
 
-				<?= debug($product); ?>
+				<!-- <?=$product; ?> -->
 
 				<div class="col-md-9 single-main-left">
 					<div class="sngl-top">
@@ -63,6 +63,14 @@
 								</div>
 
 								<h5 class="item_price"><?= $curr['symbol_left']; ?><?= $product->price * $curr['value']; ?><?= $curr['symbol_right']; ?></h5>
+
+									<!-- Выводим тут старую цену в карточке товара -->
+									<?php if ($product->old_price) : ?>
+
+											<del><?= $product->old_price * $curr['value']; ?></del>
+										
+									<?php endif; ?>
+
 								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</p>
 								<div class="available">
 									<ul>
