@@ -2,10 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\Product;
 
 class ProductController extends AppController
 {
-
+    
     // будет только один ЭКШН
     public function viewAction()
     {
@@ -32,10 +33,20 @@ class ProductController extends AppController
 
 
         // запись в куки запрошенного товара
-
+        $p_model = new Product();
+        $p_model->setRecentlyViewed($product->id);
 
 
         // просмотренные товары
+        $r_viewed = $p_model->getRecentlyViewed();
+        // debug($r_viewed);
+        $recentlyViewed = null;
+
+        // если $r_viewed будем доставать эти товары из БД и класть их в $recentlyViewed
+        if ($r_viewed) {
+            $recentlyViewed = \R::find('product', 'id IN (' . \R::genSlots($r_viewed) . ') LIMIT 3', $r_viewed);
+        }
+        // debug($recentlyViewed);
 
 
 
@@ -50,7 +61,7 @@ class ProductController extends AppController
 
         // установим методанные страницы
         $this->setMeta($product->title, $product->description, $product->keywords);
-        $this->set(compact('product', 'related', 'gallery'));
+        $this->set(compact('product', 'related', 'gallery', 'recentlyViewed'));
     }
 
 }
