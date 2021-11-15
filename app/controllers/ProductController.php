@@ -40,7 +40,8 @@ class ProductController extends AppController
 
 
         // галерея
-
+        $gallery = \R::findAll('gallery', 'product_id = ?', [$product->id]);
+        // debug($gallery);
 
 
         //  модификации товара
@@ -49,7 +50,7 @@ class ProductController extends AppController
 
         // установим методанные страницы
         $this->setMeta($product->title, $product->description, $product->keywords);
-        $this->set(compact('product', 'related'));
+        $this->set(compact('product', 'related', 'gallery'));
     }
 
 }
