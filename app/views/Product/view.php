@@ -76,7 +76,9 @@
 									<div class="clearfix"> </div>
 								</div>
 
-								<h5 class="item_price"><?= $curr['symbol_left']; ?><?= $product->price * $curr['value']; ?><?= $curr['symbol_right']; ?></h5>
+								<h5 class="item_price" id="base-price" data-base="<?= $product->price * $curr['value']; ?>">
+									<?= $curr['symbol_left']; ?><?= $product->price * $curr['value']; ?><?= $curr['symbol_right']; ?>
+								</h5>
 
 									<!-- Выводим тут старую цену в карточке товара -->
 									<?php if ($product->old_price) : ?> 
