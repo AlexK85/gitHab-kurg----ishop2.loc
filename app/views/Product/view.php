@@ -18,7 +18,7 @@
 		<div class="container">
 			<div class="single-main">
 
-				<!-- <?=$product; ?> -->
+				<!-- <?= $product; ?> -->
 
 				<div class="col-md-9 single-main-left">
 					<div class="sngl-top">
@@ -26,22 +26,22 @@
 
 							<?php if ($gallery) : ?>
 
-							<div class="flexslider">
-								<ul class="slides">
+								<div class="flexslider">
+									<ul class="slides">
 
-									<?php foreach ($gallery as $item) : ?>
+										<?php foreach ($gallery as $item) : ?>
 
-									<li data-thumb="images/<?=$item->img;?>">
-										<div class="thumb-image"> <img src="images/<?=$item->img;?>" data-imagezoom="true" class="img-responsive" alt="" /> </div>
-									</li>
+											<li data-thumb="images/<?= $item->img; ?>">
+												<div class="thumb-image"> <img src="images/<?= $item->img; ?>" data-imagezoom="true" class="img-responsive" alt="" /> </div>
+											</li>
 
-									<?php endforeach; ?>
+										<?php endforeach; ?>
 
-								</ul>
-							</div>
+									</ul>
+								</div>
 
-							<?php else: ?>
-								<img src="images/<?=$product->img?>" alt="">
+							<?php else : ?>
+								<img src="images/<?= $product->img ?>" alt="">
 
 							<?php endif; ?>
 
@@ -80,16 +80,16 @@
 									<?= $curr['symbol_left']; ?><?= $product->price * $curr['value']; ?><?= $curr['symbol_right']; ?>
 								</h5>
 
-									<!-- Выводим тут старую цену в карточке товара -->
-									<?php if ($product->old_price) : ?> 
+								<!-- Выводим тут старую цену в карточке товара -->
+								<?php if ($product->old_price) : ?>
 
-											<del><?= $product->old_price * $curr['value']; ?></del>
-										
-									<?php endif; ?>
+									<del><?= $product->old_price * $curr['value']; ?></del>
+
+								<?php endif; ?>
 
 
 								<!-- Выводим тут контент в карточке товара -->
-								<p><?=$product->content;?></p>
+								<p><?= $product->content; ?></p>
 
 
 								<div class="available">
@@ -100,33 +100,33 @@
 
 												<?php foreach ($mods as $mod) : ?>
 
-													<option data-title="<?=$mod->title;?>"data-price="<?=$mod->price * $curr['value'];?>" value="<?=$mod->id?>">
-														<?=$mod->title;?>
-												</option>
+													<option data-title="<?= $mod->title; ?>" data-price="<?= $mod->price * $curr['value']; ?>" value="<?= $mod->id ?>">
+														<?= $mod->title; ?>
+													</option>
 
 												<?php endforeach; ?>
-												
+
 											</select>
 										</li>
-										
+
 										<div class="clearfix"> </div>
 									</ul>
 								</div>
 								<ul class="tag-men">
 									<li><span>Category</span>
 										<span>:
-											<a href="category/<?=$cats[$product->category_id]['alias']?>">
-															  <?=$cats[$product->category_id]['title']?>
+											<a href="category/<?= $cats[$product->category_id]['alias'] ?>">
+												<?= $cats[$product->category_id]['title'] ?>
 											</a>
 										</span>
 									</li>
 								</ul>
 
-									<div class="quantity">
-										<input type="number"size="4" value="1" name="quantity" min="1" step="1">
-									</div>
-								
-								<a id="prductAdd" data-id="<?=$product->id;?>" href="cart/add?id=<?=$product->id;?>" class="add-cart item_add add-to-cart-link">ADD TO CART</a>
+								<div class="quantity">
+									<input type="number" size="4" value="1" name="quantity" min="1" step="1">
+								</div>
+
+								<a id="prductAdd" data-id="<?= $product->id; ?>" href="cart/add?id=<?= $product->id; ?>" class="add-cart item_add add-to-cart-link">ADD TO CART</a>
 
 							</div>
 						</div>
@@ -171,7 +171,7 @@
 					</div>
 
 
-					<?php if ($related): ?>
+					<?php if ($related) : ?>
 
 						<div class="latestproducts">
 							<div class="product-one">
@@ -182,17 +182,17 @@
 
 									<div class="col-md-4 product-left p-left">
 										<div class="product-main simpleCart_shelfItem">
-											<a href="product/<?=$item['alias']?>" class="mask"><img class="img-responsive zoom-img" src="images/<?=$item['img']?>" alt="" /></a>
+											<a href="product/<?= $item['alias'] ?>" class="mask"><img class="img-responsive zoom-img" src="images/<?= $item['img'] ?>" alt="" /></a>
 											<div class="product-bottom">
 												<h3>
-													<a href="product/<?=$item['alias']?>"><?=$item['title']?></a>
+													<a href="product/<?= $item['alias'] ?>"><?= $item['title'] ?></a>
 												</h3>
 												<p>Explore Now</p>
 												<h4>
-													<a class="item_add add-to-cart-link" href="card/add?id=<?=$item['id']?>" data-id="<?=$item['id']?>"><i></i></a> 
+													<a class="item_add add-to-cart-link" href="card/add?id=<?= $item['id'] ?>" data-id="<?= $item['id'] ?>"><i></i></a>
 													<span class="item_price"><?= $curr['symbol_left']; ?><?= $item['price'] * $curr['value']; ?><?= $curr['symbol_right']; ?></span>
 
-													<?php if ($item['old_price']) : ?> 
+													<?php if ($item['old_price']) : ?>
 
 														<del><?= $product->old_price * $curr['value']; ?></del>
 
@@ -217,7 +217,7 @@
 
 
 
-					<?php if ($recentlyViewed): ?>
+					<?php if ($recentlyViewed) : ?>
 
 						<div class="latestproducts">
 							<div class="product-one">
@@ -228,17 +228,17 @@
 
 									<div class="col-md-4 product-left p-left">
 										<div class="product-main simpleCart_shelfItem">
-											<a href="product/<?=$item['alias']?>" class="mask"><img class="img-responsive zoom-img" src="images/<?=$item['img']?>" alt="" /></a>
+											<a href="product/<?= $item['alias'] ?>" class="mask"><img class="img-responsive zoom-img" src="images/<?= $item['img'] ?>" alt="" /></a>
 											<div class="product-bottom">
 												<h3>
-													<a href="product/<?=$item['alias']?>"><?=$item['title']?></a>
+													<a href="product/<?= $item['alias'] ?>"><?= $item['title'] ?></a>
 												</h3>
 												<p>Explore Now</p>
 												<h4>
-													<a class="item_add add-to-cart-link" href="card/add?id=<?=$item['id']?>" data-id="<?=$item['id']?>"><i></i></a> 
+													<a class="item_add add-to-cart-link" href="card/add?id=<?= $item['id'] ?>" data-id="<?= $item['id'] ?>"><i></i></a>
 													<span class="item_price"><?= $curr['symbol_left']; ?><?= $item['price'] * $curr['value']; ?><?= $curr['symbol_right']; ?></span>
 
-													<?php if ($item['old_price']) : ?> 
+													<?php if ($item['old_price']) : ?>
 
 														<del><?= $product->old_price * $curr['value']; ?></del>
 

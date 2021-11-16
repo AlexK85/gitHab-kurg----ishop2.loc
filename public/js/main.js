@@ -18,10 +18,10 @@ $('.available select').on('change', function() {
     // console.log(modId, color, price);
 
     // Если у нас есть цена. 
-     if ('#base-price') {
-        // тогда обратимся к '#base-price'
-        $('#base-price').text(price);
+     if (price) {
+        // тогда обратимся к '#base-price' в view.php 
+        $('#base-price').text(symboleLeft + price + symboleRight);
     } else {
-        $('#base-price').text(basePrice);
+        $('#base-price').text(symboleLeft + basePrice + symboleRight);
     }
 });
