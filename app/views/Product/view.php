@@ -5,7 +5,9 @@
 				<ol class="breadcrumb">
 					<!-- <li><a href="index.html">Home</a></li>
 					<li class="active">Single</li> -->
+
 					<?= $breadcrumbs; ?>
+
 				</ol>
 			</div>
 		</div>
@@ -82,26 +84,29 @@
 											<del><?= $product->old_price * $curr['value']; ?></del>
 										
 									<?php endif; ?>
+
+
 								<!-- Выводим тут контент в карточке товара -->
 								<p><?=$product->content;?></p>
+
 
 								<div class="available">
 									<ul>
 										<li>Color
 											<select>
-												<option>Silver</option>
-												<option>Black</option>
-												<option>Dark Black</option>
-												<option>Red</option>
+												<option>Выбрать цвет:</option>
+
+												<?php foreach ($mods as $mod) : ?>
+
+													<option data-title="<?=$mod->title;?>"data-price="<?=$mod->price * $curr['value'];?>" value="<?=$mod->id?>">
+														<?=$mod->title;?>
+												</option>
+
+												<?php endforeach; ?>
+												
 											</select>
 										</li>
-										<li class="size-in">Size<select>
-												<option>Large</option>
-												<option>Medium</option>
-												<option>small</option>
-												<option>Large</option>
-												<option>small</option>
-											</select></li>
+										
 										<div class="clearfix"> </div>
 									</ul>
 								</div>

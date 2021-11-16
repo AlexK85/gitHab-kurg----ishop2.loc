@@ -61,12 +61,19 @@ class ProductController extends AppController
 
         //  модификации товара
 
+        // из таблицы 'modification'....
+        // выбиаем всё по полю 'product_id'....
+        // и указыввем ГДЕ находится наш 'product_id'.... 
+        // в объекте $product в свойстве id
+        $mods = \R::findAll('modification', 'product_id = ?', [$product->id]);
+        // debug($mods);
 
 
         // установим методанные страницы
         $this->setMeta($product->title, $product->description, $product->keywords);
-        // вид
-        $this->set(compact('product', 'related', 'gallery', 'recentlyViewed', 'breadcrumbs'));
+
+        // вид 
+        $this->set(compact('product', 'related', 'gallery', 'recentlyViewed', 'breadcrumbs', 'mods'));
     }
 
 }
