@@ -3,6 +3,9 @@
 namespace app\controllers;
 
 use app\models\Product;
+use app\models\Breadcrumbs;
+
+
 
 class ProductController extends AppController
 {
@@ -24,6 +27,7 @@ class ProductController extends AppController
 
 
         // хлебные крошки
+        $breadcrumbs = Breadcrumbs::getBreadcrumbs($product->category_id, $product->title);
 
 
 
@@ -61,7 +65,8 @@ class ProductController extends AppController
 
         // установим методанные страницы
         $this->setMeta($product->title, $product->description, $product->keywords);
-        $this->set(compact('product', 'related', 'gallery', 'recentlyViewed'));
+        // вид
+        $this->set(compact('product', 'related', 'gallery', 'recentlyViewed', 'breadcrumbs'));
     }
 
 }
