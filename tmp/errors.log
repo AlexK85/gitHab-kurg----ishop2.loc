@@ -6642,3 +6642,7 @@
 ================
 [2021-11-17 12:28:04] Текст ошибки: Не найден вид /opt/lampp/htdocs/my_progect_php/ishop2.loc/app/views/Cart/add.php | Файл: /opt/lampp/htdocs/my_progect_php/ishop2.loc/vendor/ishop/core/base/View.php | Строка: 52
 ================
+[2021-11-17 16:23:13] Текст ошибки: Class 'app\controllers\Cart' not found | Файл: /opt/lampp/htdocs/my_progect_php/ishop2.loc/app/controllers/CartController.php | Строка: 40
+================
+[2021-11-17 16:27:58] Текст ошибки: Class 'app\controllers\Cart' not found | Файл: /opt/lampp/htdocs/my_progect_php/ishop2.loc/app/controllers/CartController.php | Строка: 40
+================

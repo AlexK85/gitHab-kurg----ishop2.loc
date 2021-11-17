@@ -92,27 +92,36 @@
 								<p><?= $product->content; ?></p>
 
 								
-								<!-- Отвечает за вывод цвета товар в карточке товара -->
-								<div class="available">
-									<ul>
-										<li>Color
-											<select>
-												<option>Выбрать цвет:</option>
 
-												<?php foreach ($mods as $mod) : ?>
+								<?php if ($mods) : ?>
 
-													<option data-title="<?= $mod->title; ?>" data-price="<?= $mod->price * $curr['value']; ?>" value="<?= $mod->id ?>">
-														<?= $mod->title; ?>
-													</option>
 
-												<?php endforeach; ?>
+									<!-- Отвечает за вывод цвета товар в карточке товара -->
+									<div class="available">
+										<ul>
+											<li>Color
+												<select>
+													<option>Выбрать цвет:</option>
 
-											</select>
-										</li>
+													<?php foreach ($mods as $mod) : ?>
 
-										<div class="clearfix"> </div>
-									</ul>
-								</div>
+														<option data-title="<?= $mod->title; ?>" data-price="<?= $mod->price * $curr['value']; ?>" value="<?= $mod->id ?>">
+															<?= $mod->title; ?>
+														</option>
+
+													<?php endforeach; ?>
+
+												</select>
+											</li> 
+
+											<div class="clearfix"> </div>
+										</ul>
+									</div>
+
+
+								<?php endif; ?>
+
+
 								<ul class="tag-men">
 									<li><span>Category</span>
 										<span>:
