@@ -133,8 +133,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- Эту часть перенесли в Main/index.php -->
 
 	<div class="content">
-		<!-- Распечатаем корзину -->
-		<?php debug($_SESSION);   //session_destroy() - это чистит корзину; ?>
+
 		<?= $content; ?>
 
 	</div>
@@ -243,6 +242,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!-- Перенесли все скрипты -->
 	<script src="js/jquery-1.11.0.min.js"></script>
+	<script src="js/simpleCart.min.js"> </script>
 
 	<!--dropdown-->
 	<script src="js/jquery.easydropdown.js"></script>
