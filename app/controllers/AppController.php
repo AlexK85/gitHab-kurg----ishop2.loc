@@ -8,6 +8,7 @@ use ishop\base\Controller;
 use ishop\App;
 use ishop\Cache;
 
+
 class AppController extends Controller
 {
     public function __construct($route)

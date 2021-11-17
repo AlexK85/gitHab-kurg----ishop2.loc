@@ -80,6 +80,7 @@
 									<?= $curr['symbol_left']; ?><?= $product->price * $curr['value']; ?><?= $curr['symbol_right']; ?>
 								</h5>
 
+
 								<!-- Выводим тут старую цену в карточке товара -->
 								<?php if ($product->old_price) : ?>
 
@@ -91,7 +92,7 @@
 								<!-- Выводим тут контент в карточке товара -->
 								<p><?= $product->content; ?></p>
 
-								
+
 								<!-- Отвечает за вывод цвета товар в карточке товара -->
 								<div class="available">
 									<ul>
