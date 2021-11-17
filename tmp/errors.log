@@ -6638,3 +6638,7 @@
 ================
 [2021-11-16 16:05:20] Текст ошибки: Страница не найдена | Файл: /opt/lampp/htdocs/my_progect_php/ishop2.loc/vendor/ishop/core/Router.php | Строка: 69
 ================
+[2021-11-17 12:28:01] Текст ошибки: Не найден вид /opt/lampp/htdocs/my_progect_php/ishop2.loc/app/views/Cart/add.php | Файл: /opt/lampp/htdocs/my_progect_php/ishop2.loc/vendor/ishop/core/base/View.php | Строка: 52
+================
+[2021-11-17 12:28:04] Текст ошибки: Не найден вид /opt/lampp/htdocs/my_progect_php/ishop2.loc/app/views/Cart/add.php | Файл: /opt/lampp/htdocs/my_progect_php/ishop2.loc/vendor/ishop/core/base/View.php | Строка: 52
+================

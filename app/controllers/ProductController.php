@@ -59,6 +59,7 @@ class ProductController extends AppController
         // debug($gallery);
 
 
+        
         //  модификации товара
 
         // из таблицы 'modification'....
