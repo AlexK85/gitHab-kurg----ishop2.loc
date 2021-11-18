@@ -90,4 +90,13 @@ class Cart extends AppModel
         // иначе если НЕТ ТОВАРА, мы должны взять количество $qty и умножить (на активную валюту $_SESSION['cart.currency']['value'] умноженную на $price)
         $_SESSION['cart.sum'] = isset($_SESSION['cart.sum']) ? $_SESSION['cart.sum'] + $qty * ($price * $_SESSION['cart.currency']['value']) : $qty * ($price * $_SESSION['cart.currency']['value']);
     }
+
+    public function deleteItem($id)
+    {
+        $qtyMinus = $_SESSION['cart'][$id]['qty'];
+        $sumMinus = $_SESSION['cart'][$id]['qty'] * $_SESSION['cart'][$id]['price']; // в итоге мы получим на какую сумму имено данные позиции лежат в корзине
+        $_SESSION['cart.qty'] -= $qtyMinus;
+        $_SESSION['cart.sum'] -= $sumMinus;
+        unset($_SESSION['cart'][$id]);
+    }
 }

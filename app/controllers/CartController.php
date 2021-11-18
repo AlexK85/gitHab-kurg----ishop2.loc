@@ -52,8 +52,31 @@ class CartController extends AppController
     }
 
    
+
+
     // Этот ЭКШН просто подключает 'cart_modal' тут идёт распечатка корзины 
     public function showAction() {
         $this->loadView('cart_modal');
+    }
+
+
+
+    public function deleteAction() {
+        // если не пусто $_GET['id']  
+        $id = !empty($_GET['id']) ? $_GET['id'] : null;
+        // если СУЩЕСТВУЕТ в $_SESSION['cart'] такой $id
+        if (isset($_SESSION['cart'][$id])) {
+            // тогда создадим объект карзины 
+            $cart = new Cart();
+            $cart->deleteItem($id);
+        }
+
+          
+        if ($this->isAjax()) {
+            // в этом случае мы должны загрузить ответом 
+            $this->loadView('cart_modal');
+        }
+        // если данные пришли не АЯКСом 
+        redirect();
     }
 }

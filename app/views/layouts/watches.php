@@ -161,8 +161,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div class="content">
 
-		<!-- <?php debug($_SESSION);   //session_destroy() - это чистит корзину; 
-				?> -->
+		 <!-- <?php  debug($_SESSION);   //session_destroy() - это чистит корзину; debug($_SESSION);
+				?>  -->
 		<?= $content; ?>
 
 	</div>
