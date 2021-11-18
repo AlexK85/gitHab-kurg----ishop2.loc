@@ -35,7 +35,22 @@
     // Если мы товар нашли и положили его в карзину 
     // тогда мы вернём в ответе карзину, которую необходимо показать
     function showCart(cart) { 
-        console.log(cart);
+        // console.log(cart);
+
+        // Если то что пришло нам в ответе 
+        if ($.trim(cart) == '<h3>Корзина пуста</h3>') {  // обрезаем пробелы по бокам
+            // обращаемся к id cart ищем  внутри modal-footer и в нём находим ссылку 
+            // так же обращаемся к id cart ищем  внутри.modal-footer .btn-danger
+            // обращаемся выше к двум элементам и при помощи .css СКРОЕМ 
+            $('#cart .modal-footer a, #cart .modal-footer .btn-danger').css('display', 'none');
+        } else {
+            $('#cart .modal-footer a, #cart .modal-footer .btn-danger').css('display', 'inline-block');
+        }
+        // далее нужно обратиться к class="modal-body" в watches.php и вставить в  него таблицу в cart_modal.php 
+        // и методом html вставляем ответ
+        $('#cart .modal-body').html(cart)
+        // теперь МОДАЛЬНОЕ ОКНО НУЖНО ПОКАЗАТЬ
+        $('#cart').modal();
     }
 
 /*Cart*/
