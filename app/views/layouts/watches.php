@@ -161,8 +161,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div class="content">
 
-		 <!-- <?php  debug($_SESSION);   //session_destroy() - это чистит корзину; debug($_SESSION);
-				?>  -->
+		<!-- <?php debug($_SESSION);   //session_destroy() - это чистит корзину; debug($_SESSION); 
+				?> -->
 		<?= $content; ?>
 
 	</div>
@@ -276,9 +276,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="myModalLabel">Корзина</h4>
 				</div>
+
 				<div class="modal-body">
 
 				</div>
+				
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
 					<a href="cart/view" type="button" class="btn btn-primary">Оформить заказ</a>

@@ -99,4 +99,39 @@ class Cart extends AppModel
         $_SESSION['cart.sum'] -= $sumMinus;
         unset($_SESSION['cart'][$id]);
     }
+
+
+    // Пересчёт корзины если пользователь поменял валюту
+    // на вход принимает массив новой валюты
+    public static function recalc($curr)
+    {
+        // debug($curr);
+        // debug($_SESSION);
+        // die;
+        // если валюта в сессии есть в которй мы клали товар
+        if (isset($_SESSION['cart.currency'])) {
+            // если товар положен в базоваой валюте
+            if ($_SESSION['cart.currency']['base']) {
+                // тогда получим перевод из базовой валюты в не базовую
+                $_SESSION['cart.sum'] *= $curr->value;
+            } else {
+                $_SESSION['cart.sum'] = $_SESSION['cart.sum'] / $_SESSION['cart.currency']['value'] * $curr->value;
+            }
+
+            // так же нужно поменять цену каждого товара 
+            foreach ($_SESSION['cart'] as $k => $v) {
+                // если товар уже в базовой валюте лежит 
+                if ($_SESSION['cart.currency']['base']) {
+                    // тогда мы берём $_SESSION['cart'] обращаемся к текущему ключу [$k] и к цене данного товара 
+                    $_SESSION['cart'][$k]['price'] *= $curr->value;
+                } else {
+                    $_SESSION['cart'][$k]['price'] = $_SESSION['cart'][$k]['price'] / $_SESSION['cart.currency']['value'] * $curr->value;
+                }
+            }
+            // теперь нам нужно перезаписать товар в сессию
+            foreach ($curr as $k => $v) {
+                $_SESSION['cart.currency'][$k] = $v;
+            }  
+        }
+    }
 }

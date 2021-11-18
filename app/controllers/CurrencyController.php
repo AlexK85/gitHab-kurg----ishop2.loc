@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\models\Cart;
+
 
 class CurrencyController extends AppController
 {
@@ -17,6 +19,8 @@ class CurrencyController extends AppController
                 // в этом случае мы эту валюту должны записать в КУКИ
                 // создаём КУКУ 'currency' в неё записываем полученную валюту $currency на какое время и для всего домена '/'
                 setcookie('currency', $currency, time() + 3600*24*7, '/');
+
+                Cart::recalc($curr);  
             }
         }
         // далее нам необходимо перезапросить страницу
