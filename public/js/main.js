@@ -53,6 +53,11 @@
         $('#cart').modal();
     }
 
+    function getCart() {
+        
+    }
+
+
 /*Cart*/
 
 

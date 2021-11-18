@@ -67,13 +67,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="col-md-6 top-header-left">
 					<div class="cart box_1">
-						<a href="checkout.html">
+
+
+
+						<!-- Ссылка для того что бы вызвать КОРЗИНУ  //при клиек мы хотим увидеть корзину // и что бы ссылка не отработала  return false что бы отменить ДЕФОЛТНОЕ поведение ссылки-->
+						<a href="cart/show" onclick="getCart(); return false">
+							<div class="total">
+								<img src="images/cart-1.png" alt="" />
+
+								<!-- должны вывести либо корзина пуста или вывести сумму товаров в корзине -->
+								<?php if (!empty($_SESSION['cart'])) : ?>
+									<span class="simpleCart_total"><?= $_SESSION['cart.currency']['symbol_left'] . $_SESSION['cart.sum'] . $_SESSION['cart.currency']['symbol_right']; ?></span>
+								<?php else : ?>
+									<span class="simpleCart_total">Empty Cart</span>
+								<?php endif; ?>
+
+							</div>
+						</a>
+
+						<!-- <a href="checkout.html">
 							<div class="total">
 								<span class="simpleCart_total"></span>
 							</div>
 							<img src="images/cart-1.png" alt="" />
 						</a>
-						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p> -->
+
+
+
+
 						<div class="clearfix"> </div>
 					</div>
 				</div>
@@ -215,6 +237,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!--information-end-->
+
+
+
+
 	<!--footer-starts-->
 	<div class="footer">
 		<div class="container">
@@ -233,6 +259,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!--footer-end-->
+
+
+
 
 	<!-- Модальное окно -->
 	<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
