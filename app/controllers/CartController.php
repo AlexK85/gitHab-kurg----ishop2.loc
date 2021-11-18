@@ -46,8 +46,14 @@ class CartController extends AppController
             // в этом случае мы должны загрузить ответом 
             $this->loadView('cart_modal');
         }
-        die;
+        // die;
         // если данные пришли не АЯКСом 
         redirect();
+    }
+
+   
+    // Этот ЭКШН просто подключает 'cart_modal' тут идёт распечатка корзины 
+    public function showAction() {
+        $this->loadView('cart_modal');
     }
 }

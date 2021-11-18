@@ -51,10 +51,30 @@
         $('#cart .modal-body').html(cart)
         // теперь МОДАЛЬНОЕ ОКНО НУЖНО ПОКАЗАТЬ
         $('#cart').modal();
+
+        // Если у нас корзина не пуста
+        if ($('.cart-sum').text()) {
+            // данное условие не сработает
+            $('.simpleCart_total').html($('#cart .cart-sum').text());
+        } else {
+            $('.simpleCart_total').text('Empty Cart');
+        }
     }
 
+
+    // отвечает за вывод МОДАЛЬНОГО ОКНА КОРЗИНЫ
     function getCart() {
-        
+        $.ajax({
+            url: 'cart/show',
+            
+            type: 'GET',
+            success: function(res) {
+                showCart(res);
+            },
+            error: function() {
+                alert('Ошибка! Попробуйте позже');
+            }
+        });
     }
 
 

@@ -65,9 +65,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="clearfix"></div>
 					</div>
 				</div>
+
+
+
+				<!-- Удалим из корзины товары -->
+				<!-- <?php session_destroy(); ?> -->
+
 				<div class="col-md-6 top-header-left">
 					<div class="cart box_1">
-
 
 
 						<!-- Ссылка для того что бы вызвать КОРЗИНУ  //при клиек мы хотим увидеть корзину // и что бы ссылка не отработала  return false что бы отменить ДЕФОЛТНОЕ поведение ссылки-->
