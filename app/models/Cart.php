@@ -65,7 +65,7 @@ class Cart extends AppModel
 
 
         // Если существует в $_SESSION['cart'] такой [$ID]
-        if ($_SESSION['cart'][$ID]) {
+        if (isset($_SESSION['cart'][$ID])) {
             // мы возьмём $_SESSION['cart'][$ID] возьмём его ЗНАЧЕНИЕ и ПРИБАВИМ к $qty
             $_SESSION['cart'][$ID]['qty'] += $qty;
         } else {
@@ -83,7 +83,7 @@ class Cart extends AppModel
         // всё это происходит при добавлении товара в корзину
 
         // Если у нас существует $_SESSION['cart.qty'] в этом случае мы его возьмём и ПРИБАВИМ к нему переданное $qty (количество, которое мы кладём в карзину дополнительно) 
-        // иначе запишем туде добавляемое количество
+        // иначе запишем туде добавляемое количество   
         $_SESSION['cart.qty'] = isset($_SESSION['cart.qty']) ? $_SESSION['cart.qty'] + $qty : $qty;
 
         // Если у нас существует $_SESSION['cart.sum'] в этом случае мы его возьмём и ПРИБАВИМ к нему $qty (количество, которое добавляется в карзину ) УМНОЖЕННОЕ на (КУРС АКТИВНОЙ ВАЛЮТЫ - $_SESSION['cart.currency']['value'] умноженную на $price)
@@ -131,7 +131,7 @@ class Cart extends AppModel
             // теперь нам нужно перезаписать товар в сессию
             foreach ($curr as $k => $v) {
                 $_SESSION['cart.currency'][$k] = $v;
-            }  
+            }
         }
     }
 }

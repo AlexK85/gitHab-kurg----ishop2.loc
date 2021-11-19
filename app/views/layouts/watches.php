@@ -69,14 +69,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 				<!-- Удалим из корзины товары -->
-				<!-- <?php session_destroy(); ?> -->
+				<!-- <?php //session_destroy();
+						?> -->
 
 				<div class="col-md-6 top-header-left">
 					<div class="cart box_1">
 
 
 						<!-- Ссылка для того что бы вызвать КОРЗИНУ  //при клиек мы хотим увидеть корзину // и что бы ссылка не отработала  return false что бы отменить ДЕФОЛТНОЕ поведение ссылки-->
-						<a href="cart/show" onclick="getCart(); return false">
+						<a href="cart/show" onclick="getCart(); return false;">
 							<div class="total">
 								<img src="images/cart-1.png" alt="" />
 
@@ -280,7 +281,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="modal-body">
 
 				</div>
-				
+
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
 					<a href="cart/view" type="button" class="btn btn-primary">Оформить заказ</a>
