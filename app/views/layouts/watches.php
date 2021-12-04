@@ -17,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- <link href="css/bootstrap.css.map" rel="stylesheet" type="text/css" media="all" /> -->
-	<link href="megamenu/css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" /> 
+	<link href="megamenu/css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="megamenu/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
@@ -274,9 +274,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<h4 class="modal-title" id="myModalLabel">Корзина</h4>
 				</div>
 
-					<div class="modal-body">
+				<div class="modal-body">
 
-					</div>
+				</div>
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
@@ -306,6 +306,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script src="js/jquery.easydropdown.js"></script>
 
 	<!--Slider-Starts-Here-->
+	<script src="js/responsiveslides.min.js"></script>
 
 	<script>
 		// You can also use "$(window).load(function() {"
