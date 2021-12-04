@@ -301,6 +301,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- Перенесли все скрипты -->
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/typeahead.bundle.js"></script>
 
 	<!--dropdown-->
 	<script src="js/jquery.easydropdown.js"></script>
