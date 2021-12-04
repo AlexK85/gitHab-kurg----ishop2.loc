@@ -17,7 +17,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- <link href="css/bootstrap.css.map" rel="stylesheet" type="text/css" media="all" /> -->
-	<link href="megamenu/css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="megamenu/css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" /> 
 	<link href="megamenu/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 
@@ -26,11 +26,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!--//theme-style-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-
-	<!-- удаляет во 2 части курса -->
-	<!-- <meta name="keywords" content="Luxury Watches Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" /> -->
 
 
 	<!-- Во 2 части курса перенесли от сюда вниз в Футер все скрипты  -->
@@ -100,8 +95,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p> -->
 
 
-
-
 						<div class="clearfix"> </div>
 					</div>
 				</div>
@@ -153,8 +146,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 	</div>
 	<!--bottom-header-->
-	<!--banner-starts-->
 
+
+	<!--banner-starts-->
+	<!-- Эту часть перенесли в Main/index.php -->
+	<!--banner-ends-->
 
 
 
@@ -162,7 +158,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div class="content">
 
-		<!-- <?php debug($_SESSION);   //session_destroy() - это чистит корзину; debug($_SESSION); 
+		<!-- <?php //debug($_SESSION);   //session_destroy() - это чистит корзину; debug($_SESSION); 
 				?> -->
 		<?= $content; ?>
 
@@ -278,9 +274,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h4 class="modal-title" id="myModalLabel">Корзина</h4>
 				</div>
 
-				<div class="modal-body">
+					<div class="modal-body">
 
-				</div>
+					</div>
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>

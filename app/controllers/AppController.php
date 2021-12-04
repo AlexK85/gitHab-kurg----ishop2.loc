@@ -32,7 +32,7 @@ class AppController extends Controller
 
         // кладём в контейнер 
         App::$app->setProperty('cats', self::cacheCategory());
-        // debug(App::$app->getProperties()); // распечатаем ВЕСЬ контейнер
+        //debug(App::$app->getProperties()); // распечатаем ВЕСЬ контейнер
     }
 
     public static function cacheCategory()

@@ -27,7 +27,7 @@ class Breadcrumbs
         }
 
         return $breadcrumbs;
-        // debug($breadcrumbs_array);
+        // debug($breadcrumbs_array); 
     }
 
     // служебный метод 
