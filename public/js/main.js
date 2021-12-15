@@ -3,9 +3,9 @@
     var products = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.whitespace,
         queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remout: {
+        remote: {
             wildcard: '%QUERY',
-            url: path + 'search/typeahead?query=%QUERY'
+            url: path + '/search/typeahead?query=%QUERY'
         }
     });
 
@@ -23,7 +23,7 @@
     });
 
     
-    $('#typeahead').bind('typeahead=select', function(ev, suggestion) {
+    $('#typeahead').bind('typeahead:select', function(ev, suggestion) {
         // console.log(suggestion);
         window.location = path + '/search/?s=' + encodeURIComponent(suggestion.title);
     });
