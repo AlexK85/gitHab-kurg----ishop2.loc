@@ -12,10 +12,22 @@ class SearchController extends AppController
             $query = !empty(trim($_GET['query'])) ? trim($_GET['query']) : null;
 
             if ($query) {
-                $products = \R::getAll('SELECT id, title FROM product WHERE title LIKE ? LIMIT 9', ["%{$query}%"]);
+                $products = \R::getAll('SELECT id, title FROM product WHERE title LIKE ? LIMIT 11', ["%{$query}%"]);
                 echo json_encode($products);
             }
         }
         die;
+    }
+
+    public function indexAction()
+    {
+        $query = !empty(trim($_GET['query'])) ? trim($_GET['query']) : null;
+
+        if ($query) {
+            $products = \R::find('product', "title LIKE ?", ["%{$query}%"]);
+        }
+        // установим мета данные для страницы
+        $this->setMeta('Поиск по: ' . h($query));    // h() - тут служебная функция, которая использует htmlspecialchars()
+        $this->set(compact('products'));
     }
 }
