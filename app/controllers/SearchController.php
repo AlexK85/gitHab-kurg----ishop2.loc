@@ -21,13 +21,13 @@ class SearchController extends AppController
 
     public function indexAction()
     {
-        $query = !empty(trim($_GET['query'])) ? trim($_GET['query']) : null;
+        $query = !empty(trim($_GET['s'])) ? trim($_GET['s']) : null;
 
         if ($query) {
             $products = \R::find('product', "title LIKE ?", ["%{$query}%"]);
         }
         // установим мета данные для страницы
         $this->setMeta('Поиск по: ' . h($query));    // h() - тут служебная функция, которая использует htmlspecialchars()
-        $this->set(compact('products'));
+        $this->set(compact('products', 'query'));
     }
 }
