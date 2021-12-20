@@ -4,13 +4,13 @@
 	        <div class="breadcrumbs-main">
 	            <ol class="breadcrumb">
 	                <li><a href="<?= PATH; ?>">Главная</a></li>
-	                <li>Поиск по запросу "<?= h($query); ?>"</li>
+	                <li>Категория</li>
 	            </ol>
 	        </div>
-	    </div> 
+	    </div>
 	</div>
 	<!--end-breadcrumbs-->
-	<!--prdt-starts-->
+
 	<div class="prdt">
 	    <div class="container">
 	        <div class="prdt-top">
@@ -32,7 +32,7 @@
 	                                        <h3><?= $product->title; ?></h3>
 	                                        <p>Explore Now</p>
 
-                                            
+
 	                                        <!-- Добавили сюда вывод карзины add-to-cart-link -->
 
 	                                        <h4>
@@ -64,6 +64,10 @@
 
 	                        <div class="clearfix"></div>
 	                    </div>
+
+	                <?php else : ?>
+
+	                    <h3>В этой категории товаров пока нет...</h3>
 
 	                <?php endif; ?>
 
