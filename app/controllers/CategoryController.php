@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Breadcrumbs;
 use app\models\Category;
 // use ishop\App;
 
@@ -30,14 +31,14 @@ class CategoryController extends AppController
         // die;
 
         // Далее получим ХЛЕБНЫЕ КРОШКИ
-        $breadcrumbs = '';
+        $breadcrumbs = Breadcrumbs::getBreadcrumbs($category->id);
 
 
         $cat_model = new Category();
         echo $ids = $cat_model->getIds($category->id);
         // debug(App::$app->getProperty('cats'));
         // var_dump($ids);  // выедет NULL 
-        echo $ids = !$ids ? $category->id : $ids . $category->id;
+        $ids = !$ids ? $category->id : $ids . $category->id;
         // die;
 
         // получаем продукты
