@@ -64,6 +64,19 @@
 							<?php endforeach; ?>
 
 							<div class="clearfix"></div>
+
+
+							<div class="text-center">
+
+								<p>(<?= count($products) ?> товара(ов) <?= $total; ?>)</p>
+
+								<?php if ($pagination->countPages > 1) : ?>
+									<?= $pagination; ?>
+								<?php endif; ?>
+
+							</div>
+
+
 						</div>
 
 					<?php else : ?>

@@ -4,8 +4,8 @@ namespace app\controllers;
 
 use app\models\Breadcrumbs;
 use app\models\Category;
-// use ishop\App;
-
+use ishop\App;
+use ishop\libs\Pagination;
 
 class CategoryController extends AppController
 {
@@ -30,23 +30,41 @@ class CategoryController extends AppController
         // echo 'OK';
         // die;
 
+
         // Далее получим ХЛЕБНЫЕ КРОШКИ
         $breadcrumbs = Breadcrumbs::getBreadcrumbs($category->id);
 
 
         $cat_model = new Category();
-        echo $ids = $cat_model->getIds($category->id);
+        $ids = $cat_model->getIds($category->id);
         // debug(App::$app->getProperty('cats'));
         // var_dump($ids);  // выедет NULL 
         $ids = !$ids ? $category->id : $ids . $category->id;
         // die;
 
+
+
+        // Нужно для получения постраничной навигации! 
+
+        // var_dump(App::$app->getProperty('pagination'));
+        // Если есть номер страница, то берём его, если нет тогда это будет 1 
+        $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $perpage = App::$app->getProperty('pagination');
+        $total = \R::count('product', "category_id IN ($ids)");
+        $pagination = new Pagination($page, $perpage, $total);
+        // С какой записи начинать выбирать
+        $start = $pagination->getStart();
+
+        // var_dump($pagination);
+        // echo $pagination;
+
+
         // получаем продукты
-        $products = \R::find('product', "category_id IN ($ids)");
+        $products = \R::find('product', "category_id IN ($ids) LIMIT $start, $perpage");
         // debug($products);
 
         // передадим теперь все данные в ВИД
         $this->setMeta($category->title, $category->description, $category->keywords);
-        $this->set(compact('products', 'breadcrumbs')); // данные для представления
+        $this->set(compact('products', 'breadcrumbs', 'pagination', 'total')); // данные для представления
     }
 }
