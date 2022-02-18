@@ -3319,3 +3319,12 @@ span.twitter-typeahead {
 }
 
 /*Search*/
+
+
+
+.drop > .btn-group > a {
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  top: -2px;
+}

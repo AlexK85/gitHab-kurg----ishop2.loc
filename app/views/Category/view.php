@@ -68,7 +68,7 @@
 
 							<div class="text-center">
 
-								<p>(<?= count($products) ?> товара(ов) <?= $total; ?>)</p>
+								<p>(<?= count($products) ?> товара(ов) из <?= $total; ?>)</p>
 
 								<?php if ($pagination->countPages > 1) : ?>
 									<?= $pagination; ?>
