@@ -1,9 +1,4 @@
-<!--A Design by W3layouts 
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+
 <!DOCTYPE html>
 <html>
 
@@ -51,7 +46,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 
 						<div class="btn-group">
-							<a class="dropdown-toggle" data-toggle="dropdown">Accaunt<span class="caret"></span></a>
+							<a class="dropdown-toggle" data-toggle="dropdown">Account<span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<?php if (!empty($_SESSION['user'])) : ?>
 									<li><a href="#">Добро подаловать, <?= h($_SESSION['user']['name']); ?></a></li>

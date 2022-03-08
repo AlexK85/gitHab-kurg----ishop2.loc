@@ -1438,7 +1438,9 @@ a.mask {
   margin-top: 2.2em;
 }
 .account-left input[type="text"],
-.account-left input[type="password"] {
+.account-left input[type="password"],
+.account-left input[type="email"],
+.account-left input[type="address"] {
   width: 90%;
   margin: 0px;
   color: #000;
@@ -3319,8 +3321,6 @@ span.twitter-typeahead {
 }
 
 /*Search*/
-
-
 
 .drop > .btn-group > a {
   color: #fff;
