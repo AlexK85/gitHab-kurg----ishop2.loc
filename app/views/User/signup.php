@@ -57,7 +57,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                     <div class="form-group">
                                         <label for="address">Address</label>
-                                        <input type="txst" name="address" class="form-control" id="address" placeholder="Address">
+                                        <input type="text" name="address" class="form-control" id="address" placeholder="Address">
                                     </div>
 
                                     <button type="submit" class="btn btn-default">Зарегистрировать</button>
