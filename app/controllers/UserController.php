@@ -16,7 +16,7 @@ class UserController extends AppController
             $user->load($data);
             // debug($user->attributes);
 
-            if (!$user->validate($data)) {
+            if (!$user->validate($data) || !$user->checkUnique()) {
                 // echo 'NO';
                 debug($user->errors);
                 $user->getErrors();
