@@ -18,15 +18,22 @@ class UserController extends AppController
 
             if (!$user->validate($data)) {
                 // echo 'NO';
-                debug($user->errors); 
+                debug($user->errors);
                 $user->getErrors();
-                redirect();
+                // redirect();
             } else {
                 // echo 'OK';
-                $_SESSION['success'] = 'OK';
-                redirect();
+                // $_SESSION['success'] = 'OK';
+                if ($user->save('user')) {
+                    $_SESSION['success'] = 'Пользователь зарегестрирован';
+                } else {
+                    $_SESSION['error'] = 'Ошибка!';
+                }
+                // $_SESSION['success'] = 'Пользователь зарегестрирован';
+                // redirect();
             }
             // die;
+            redirect();
         }
         $this->setMeta('Регистрация');
     }
