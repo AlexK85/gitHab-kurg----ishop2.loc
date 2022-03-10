@@ -52,7 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                     <div class="form-group has-feedback">
                                         <label for="name">Имя</label>
-                                        <input type="password" name="name" class="form-control" id="name" placeholder="Имя" required>
+                                        <input type="text" name="name" class="form-control" id="name" placeholder="Имя" required>
                                         <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
                                     <div class="form-group has-feedback">
