@@ -34,6 +34,7 @@ abstract class Model
     }
 
 
+    // сохраняет данные в модель (данные в таблицу) 
     public function save($table)
     {
         $tbl = \R::dispense($table);

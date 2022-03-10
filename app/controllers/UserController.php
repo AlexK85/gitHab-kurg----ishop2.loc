@@ -24,6 +24,8 @@ class UserController extends AppController
             } else {
                 // echo 'OK';
                 // $_SESSION['success'] = 'OK';
+                // для скрытия хеша в поле password в БД
+                $user->attributes['password'] = password_hash($user->attributes['password'], PASSWORD_DEFAULT);
                 if ($user->save('user')) {
                     $_SESSION['success'] = 'Пользователь зарегестрирован';
                 } else {
