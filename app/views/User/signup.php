@@ -37,27 +37,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="register-main">
                             <div class="col-md-6 account-left">
 
-                                <form method="post" action="user/signup" id="signup" role="form">
+                                <form method="post" action="user/signup" id="signup" role="form" data-toggle="validator">
 
-                                    <div class="form-group">
+                                    <div class="form-group has-feedback">
                                         <label for="login">Login</label>
-                                        <input type="text" name="login" class="form-control" id="login" placeholder="Login">
+                                        <input type="text" name="login" class="form-control" id="login" placeholder="Login" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group has-feedback">
                                         <label for="password">Password</label>
-                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" data-error="Пароль должен включать не менее 6 символов" data-minlength="6" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                        <div class="help-block with-errors"></div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group has-feedback">
                                         <label for="name">Имя</label>
-                                        <input type="password" name="name" class="form-control" id="name" placeholder="Имя">
+                                        <input type="password" name="name" class="form-control" id="name" placeholder="Имя" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group has-feedback">
                                         <label for="email">Email</label>
-                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email">
+                                        <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group has-feedback">
                                         <label for="address">Address</label>
-                                        <input type="text" name="address" class="form-control" id="address" placeholder="Address">
+                                        <input type="text" name="address" class="form-control" id="address" placeholder="Address" required>
+                                        <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                     </div>
 
                                     <button type="submit" class="btn btn-default">Зарегистрировать</button>

@@ -162,7 +162,7 @@
 
 					<?php if (isset($_SESSION['error'])) : ?>
 						<div class="alert alert-danger">
-							<?php echo $_SESSION['error']; 
+							<?php echo $_SESSION['error'];
 							unset($_SESSION['error']); ?>
 						</div>
 					<?php endif; ?>
@@ -320,6 +320,7 @@
 	<!-- Перенесли все скрипты -->
 	<script src="js/jquery-1.11.0.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
+	<script src="js/validator.js"></script>
 	<script src="js/typeahead.bundle.js"></script>
 
 	<!--dropdown-->
