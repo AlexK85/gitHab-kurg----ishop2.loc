@@ -42,8 +42,17 @@ class UserController extends AppController
     }
 
 
+    // сюда уходят данные введённый пользователем после ввода данных в форму login.php
     public function loginAction()
     {
+        // Если у нас приходят на эту страницу данные ПОСТОМ
+        // Если не пуст массив POST
+        if (!empty($_POST)) {
+            //Создадим объект пользователя 
+            $user = new User();
+        }
+        // Установили метаданные
+        $this->setMeta('Вход');
     }
 
 

@@ -46,4 +46,32 @@ class User extends AppModel
         }
         return true;
     }
+
+    public function login($isAdmin = false)
+    {
+        $login = !empty(trim($_POST['login'])) ? trim($_POST['login']) : null;
+        $password = !empty(trim($_POST['password'])) ? trim($_POST['password']) : null;
+
+        if ($login && $password) {
+            if ($isAdmin) {
+                // нужно найти одного пользователя findOne() в таблице user где поле login = ? AND role = 'admin', а значение мы берём из [$login]
+                $user = \R::findOne('user', "login = ? AND role = 'admin'", [$login]);
+            } else {
+                $user = \R::findOne('user', "login = ?", [$login]);
+            }
+
+            // Если мы достали по логину пользователя
+            if ($user) {
+                //тогда проверим пароль пользователя: 1 параметр - передаём полученный пароль, 2 параметр - строку, с которой сравниваем, если мы достанем пользователя.
+                if (password_verify($password, $this->password)) {
+                    foreach ($user as $k => $v) {
+                        if ($k != 'password') $_SESSION['user'][$k] = $v;
+                    }
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }
