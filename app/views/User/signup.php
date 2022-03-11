@@ -70,6 +70,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                 </form>
 
+                                <!-- После обновления страницы данные должны удаляться из сессии. -->
+                                <?php if (isset($_SESSION['form_data'])) unset($_SESSION['form_data']); ?>
+
                             </div>
 
                             <!-- <div class="clearfix"></div> -->
