@@ -20,6 +20,7 @@ class UserController extends AppController
                 // echo 'NO';
                 debug($user->errors);
                 $user->getErrors();
+                $_SESSION['form_data'] = $data;
                 // redirect();
             } else {
                 // echo 'OK';
