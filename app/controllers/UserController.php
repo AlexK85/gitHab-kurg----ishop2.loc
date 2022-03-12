@@ -61,8 +61,11 @@ class UserController extends AppController
         $this->setMeta('Вход');
     }
 
-
+    // метод для выхода из авторизации
     public function logoutAction()
     {
+        // если существует в $_SESSION['user'] тогда его удалим.
+        if (isset($_SESSION['user'])) unset($_SESSION['user']);
+        redirect();
     }
 }
