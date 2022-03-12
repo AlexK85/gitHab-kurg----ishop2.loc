@@ -63,7 +63,7 @@ class User extends AppModel
             // Если мы достали по логину пользователя
             if ($user) {
                 //тогда проверим пароль пользователя: 1 параметр - передаём полученный пароль, 2 параметр - строку, с которой сравниваем, если мы достанем пользователя.
-                if (password_verify($password, $this->password)) {
+                if (password_verify($password, $user->password)) {
                     foreach ($user as $k => $v) {
                         if ($k != 'password') $_SESSION['user'][$k] = $v;
                     }

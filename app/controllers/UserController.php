@@ -50,6 +50,12 @@ class UserController extends AppController
         if (!empty($_POST)) {
             //Создадим объект пользователя 
             $user = new User();
+            if ($user->login()) {
+                $_SESSION['success'] = 'Вы успешно авторизованы';
+            } else {
+                $_SESSION['error'] = 'Логин/пароль введены неверно';
+            }
+            redirect();
         }
         // Установили метаданные
         $this->setMeta('Вход');
