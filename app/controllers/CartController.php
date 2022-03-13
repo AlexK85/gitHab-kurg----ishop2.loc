@@ -91,4 +91,9 @@ class CartController extends AppController
 
         $this->loadView('cart_modal');
     }
+
+    public function viewAction()
+    {
+        $this->setMeta('Корзина');
+    }
 }
