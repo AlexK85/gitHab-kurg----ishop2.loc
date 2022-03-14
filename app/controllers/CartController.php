@@ -103,45 +103,43 @@ class CartController extends AppController
         if (!empty($_POST)) {
             //регистрация пользователя
             if (!User::checkAuth()) {
-                //если не пусто
-                if (!empty($_POST)) {
-                    $user = new User();
-                    $data = $_POST;
-                    $user->load($data);
-                    // debug($user->attributes);
+                //если не пусто 
+                $user = new User();
+                $data = $_POST;
+                $user->load($data);
+                // debug($user->attributes);
 
-                    if (!$user->validate($data) || !$user->checkUnique()) {
-                        // echo 'NO';
-                        debug($user->errors);
-                        $user->getErrors();
-                        $_SESSION['form_data'] = $data;
+                if (!$user->validate($data) || !$user->checkUnique()) {
+                    // echo 'NO';
+                    debug($user->errors);
+                    $user->getErrors();
+                    $_SESSION['form_data'] = $data;
+                    redirect();
+                } else {
+                    // echo 'OK';
+                    // $_SESSION['success'] = 'OK';
+                    // для скрытия хеша в поле password в БД
+                    $user->attributes['password'] = password_hash($user->attributes['password'], PASSWORD_DEFAULT);
+                    if (!$user_id = $user->save('user')) {
+                        $_SESSION['error'] = 'Ошибка!';
                         redirect();
-                    } else {
-                        // echo 'OK';
-                        // $_SESSION['success'] = 'OK';
-                        // для скрытия хеша в поле password в БД
-                        $user->attributes['password'] = password_hash($user->attributes['password'], PASSWORD_DEFAULT);
-                        if (!$user_id = $user->save('user')) {
-                            $_SESSION['error'] = 'Ошибка!';
-                            redirect();
-                        }
-                        // $_SESSION['success'] = 'Пользователь зарегестрирован';
-                        // redirect();
                     }
-                    // die;
+                    // $_SESSION['success'] = 'Пользователь зарегестрирован';
                     // redirect();
                 }
+                // die;
+                // redirect();
 
-                //сохранение заказа
-                $data['user_id'] = isset($user_id) ? $user_id : $_SESSION['user']['id'];
-                $data['note'] = !empty($_POST['note']) ? $_POST['note'] : '';
-                $user_email = isset($_SESSION['user']['email']) ? $_SESSION['user']['email'] : $_POST['email'];
-                //получаем номер заказа
-                //создаёт новый заказа в таблицке order и вернёт нам номер заказа
-                $order_id = Order::saveOrder($data);
-                Order::mailOrder($order_id, $user_email);
             }
-            redirect();
+            //сохранение заказа
+            $data['user_id'] = isset($user_id) ? $user_id : $_SESSION['user']['id'];
+            $data['note'] = !empty($_POST['note']) ? $_POST['note'] : '';
+            $user_email = isset($_SESSION['user']['email']) ? $_SESSION['user']['email'] : $_POST['email'];
+            //получаем номер заказа
+            //создаёт новый заказа в таблицке order и вернёт нам номер заказа
+            $order_id = Order::saveOrder($data);
+            Order::mailOrder($order_id, $user_email);
         }
+        redirect();
     }
 }
