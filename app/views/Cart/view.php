@@ -14,11 +14,8 @@
    <!--prdt-starts-->
    <div class="prdt">
        <div class="container">
-
            <div class="prdt-top">
-
                <div class="col-md-12">
-
                    <div class="product-one cart">
 
                        <div class="register-top heading">
@@ -26,8 +23,6 @@
                        </div>
 
                        <br><br>
-
-
                        <!-- Если не пусто в корзине -->
                        <?php if (!empty($_SESSION['cart'])) : ?>
                            <div class="table-responsive">
@@ -49,7 +44,7 @@
                                                <td><a href="product/<?= $item['alias']; ?>"><?= $item['title']; ?></td>
                                                <td><?= $item['qty'] ?></td>
                                                <td><?= $item['price'] ?></td>
-                                               <td><a href="/cart/delete/?id=<?= $id; ?>"><span data-id="<?= $id; ?>" class="glyphicon glyphicon-remove text-danger del-item" aria-hidden="true"></span></a></td>
+                                               <td><a href="./cart/delete/?id=<?= $id; ?>"><span data-id="<?= $id; ?>" class="glyphicon glyphicon-remove text-danger del-item" aria-hidden="true"></span></a></td>
                                            </tr>
                                        <?php endforeach; ?>
 
@@ -67,53 +62,54 @@
                                </table>
                            </div>
 
-                           <div class="col-md-6 account-left">
+                           <div class="container">
+                               <div class="col-md-6 account-left">
+                                   <form method="post" action="cart/checkout" role="form" data-toggle="validator">
 
-                               <form method="post" action="user/checkout" role="form" data-toggle="validator">
+                                       <?php if (!isset($_SESSION['user'])) : ?>
 
-                                   <?php if (!isset($_SESSION['user'])) : ?>
+                                           <div class="form-group has-feedback">
+                                               <label for="login">Login</label>
+                                               <input type="text" name="login" class="form-control" id="login" placeholder="Login" value="<?= isset($_SESSION['form_data']['login']) ? h($_SESSION['form_data']['login']) : ''; ?>" required>
+                                               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                           </div>
+                                           <div class="form-group has-feedback">
+                                               <label for="password">Password</label>
+                                               <input type="password" name="password" class="form-control" id="password" placeholder="Password" data-error="Пароль должен включать не менее 6 символов" data-minlength="6" value="<?= isset($_SESSION['form_data']['password']) ? h($_SESSION['form_data']['password']) : ''; ?>" required>
+                                               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                               <div class="help-block with-errors"></div>
+                                           </div>
+                                           <div class="form-group has-feedback">
+                                               <label for="name">Имя</label>
+                                               <input type="text" name="name" class="form-control" id="name" placeholder="Имя" value="<?= isset($_SESSION['form_data']['name']) ? h($_SESSION['form_data']['name']) : ''; ?>" required>
+                                               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                           </div>
+                                           <div class="form-group has-feedback">
+                                               <label for="email">Email</label>
+                                               <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="<?= isset($_SESSION['form_data']['email']) ? h($_SESSION['form_data']['email']) : ''; ?>" required>
+                                               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                           </div>
+                                           <div class="form-group has-feedback">
+                                               <label for="address">Address</label>
+                                               <input type="text" name="address" class="form-control" id="address" placeholder="Address" value="<?= isset($_SESSION['form_data']['address']) ? h($_SESSION['form_data']['address']) : ''; ?>" required>
+                                               <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                           </div>
 
-                                       <div class="form-group has-feedback">
-                                           <label for="login">Login</label>
-                                           <input type="text" name="login" class="form-control" id="login" placeholder="Login" value="<?= isset($_SESSION['form_data']['login']) ? h($_SESSION['form_data']['login']) : ''; ?>" required>
-                                           <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                       <?php endif; ?>
+
+                                       <div class="form-group">
+                                           <label for="adress">Note</label>
+                                           <textarea name="note" class="form-control"></textarea>
                                        </div>
-                                       <div class="form-group has-feedback">
-                                           <label for="password">Password</label>
-                                           <input type="password" name="password" class="form-control" id="password" placeholder="Password" data-error="Пароль должен включать не менее 6 символов" data-minlength="6" value="<?= isset($_SESSION['form_data']['password']) ? h($_SESSION['form_data']['password']) : ''; ?>" required>
-                                           <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                           <div class="help-block with-errors"></div>
-                                       </div>
-                                       <div class="form-group has-feedback">
-                                           <label for="name">Имя</label>
-                                           <input type="text" name="name" class="form-control" id="name" placeholder="Имя" value="<?= isset($_SESSION['form_data']['name']) ? h($_SESSION['form_data']['name']) : ''; ?>" required>
-                                           <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                       </div>
-                                       <div class="form-group has-feedback">
-                                           <label for="email">Email</label>
-                                           <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="<?= isset($_SESSION['form_data']['email']) ? h($_SESSION['form_data']['email']) : ''; ?>" required>
-                                           <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                       </div>
-                                       <div class="form-group has-feedback">
-                                           <label for="address">Address</label>
-                                           <input type="text" name="address" class="form-control" id="address" placeholder="Address" value="<?= isset($_SESSION['form_data']['address']) ? h($_SESSION['form_data']['address']) : ''; ?>" required>
-                                           <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                       </div>
 
-                                   <?php endif; ?>
+                                       <button type="submit" class="btn btn-default">Оформить</button>
 
-                                   <div class="form-group">
-                                       <label for="adress">Note</label>
-                                       <textarea name="note" class="form-control"></textarea>
-                                   </div>
+                                   </form>
 
-                                   <button type="submit" class="btn btn-default">Оформить</button>
+                                   <!-- После обновления страницы данные должны удаляться из сессии. -->
+                                   <?php if (isset($_SESSION['form_data'])) unset($_SESSION['form_data']); ?>
 
-                               </form>
-
-                               <!-- После обновления страницы данные должны удаляться из сессии. -->
-                               <?php if (isset($_SESSION['form_data'])) unset($_SESSION['form_data']); ?>
-
+                               </div>
                            </div>
 
                        <?php else : ?>
