@@ -179,11 +179,10 @@
 		</div>
 		<!-- <?php //debug($_SESSION);   //session_destroy() - это чистит корзину; debug($_SESSION); 
 				?> -->
+		<!-- <?php debug($_SESSION); ?> -->
 		<?= $content; ?>
 
 	</div>
-
-
 
 
 	<!--information-starts-->

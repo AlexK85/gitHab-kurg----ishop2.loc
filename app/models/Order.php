@@ -18,8 +18,25 @@ class Order extends AppModel
         return $order_id;
     }
 
+    // для сохранения товаров из корзины
     public static function saveOrderProduct($order_id)
     {
+        $sql_part = '';
+        foreach ($_SESSION['cart'] as $product_id => $product) {
+            $product_id = (int)$product_id;
+            // номер заказа, id продукта, количество продукта, название продукта, цена продукта
+            $sql_part .= "($order_id, $product_id, {$product['qty']}, '{$product['title']}', {$product['price']}),";
+        }
+        $sql_part = rtrim($sql_part, ',');
+        // echo $sql_part;
+        // die;
+
+        // формируем запрос
+        // $query = " INSERT INTO order_product (order_id, product_id, qty, title, price) VALUES $sql_part";
+        // var_dump($query);
+        // die;
+
+        \R::exec("INSERT INTO order_product (order_id, product_id, qty, title, price) VALUES " . $sql_part);
     }
 
     public static function mailOrder($order_id, $user_mail)
