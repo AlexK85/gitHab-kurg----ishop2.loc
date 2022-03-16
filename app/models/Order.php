@@ -39,6 +39,7 @@ class Order extends AppModel
         \R::exec("INSERT INTO order_product (order_id, product_id, qty, title, price) VALUES " . $sql_part);
     }
 
+    // для отправки письма на email
     public static function mailOrder($order_id, $user_mail)
     {
     }
