@@ -2,6 +2,12 @@
 
 namespace app\models;
 
+use ishop\App;
+use Swift_Mailer;
+use Swift_Message;
+use Swift_SmtpTransport;
+
+
 //Модель для работы с заказом. 
 class Order extends AppModel
 {
@@ -42,5 +48,49 @@ class Order extends AppModel
     // для отправки письма на email
     public static function mailOrder($order_id, $user_mail)
     {
+        // Create the Transport
+        $transport = (new Swift_SmtpTransport(App::$app->getProperty('smtp_host'), App::$app->getProperty('smtp_port'), App::$app->getProperty('smtp_protocol')))
+            ->setUsername(App::$app->getProperty('smtp_login'))
+            ->setPassword(App::$app->getProperty('smtp_password'));
+
+
+        // Create the Mailer using your created Transport
+        $mailer = new Swift_Mailer($transport);
+
+
+        // Create a message
+        ob_start(); // подключение буферизации
+        require APP . '/views/mail/mail_order.php';
+
+        // И в переменную $body вернём из буфера данные 
+        $body = ob_get_clean();
+
+
+        $message_client = (new Swift_Message("Заказ №{$order_id}"))
+            ->setFrom([App::$app->getProperty('smtp_login') => 'shop_name'])
+            ->setTo(App::$app->getProperty('user_email'))
+            ->setBody($body, 'text/html');
+
+
+        // письмо для администратора
+        $message_admin = (new Swift_Message("Заказ №{$order_id}"))
+            ->setFrom([App::$app->getProperty('smtp_login') => 'shop_name'])
+            ->setTo(App::$app->getProperty('admin_email'))
+            ->setBody($body, 'text/html');
+
+
+        // Send the message
+        $result = $mailer->send($message_client);
+        // Send the message
+        $result = $mailer->send($message_admin);
+
+        // очищаем корзину 
+        unset($_SESSION['cart']);
+        unset($_SESSION['cart.qty']);
+        unset($_SESSION['cart.sum']);
+        unset($_SESSION['cart.currency']);
+
+        // сообщение об успехе
+        $_SESSION['success'] = 'Спасибо за Ваш заказ. В ближайшее время с Вами свяжется менеджер для согласования заказа!';
     }
 }
