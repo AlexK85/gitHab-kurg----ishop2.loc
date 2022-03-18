@@ -138,6 +138,7 @@ class CartController extends AppController
             //получаем номер заказа
             //создаёт новый заказа в таблицке order и вернёт нам номер заказа
             $order_id = Order::saveOrder($data);
+            
             Order::mailOrder($order_id, $user_email);
         }
         redirect();

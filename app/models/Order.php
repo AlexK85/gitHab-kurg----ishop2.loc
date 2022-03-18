@@ -46,7 +46,7 @@ class Order extends AppModel
     }
 
     // для отправки письма на email
-    public static function mailOrder($order_id, $user_mail)
+    public static function mailOrder($order_id, $user_email)
     {
         // Create the Transport
         $transport = (new Swift_SmtpTransport(App::$app->getProperty('smtp_host'), App::$app->getProperty('smtp_port'), App::$app->getProperty('smtp_protocol')))
@@ -66,21 +66,23 @@ class Order extends AppModel
         $body = ob_get_clean();
 
 
-        $message_client = (new Swift_Message("Заказ №{$order_id}"))
-            ->setFrom([App::$app->getProperty('smtp_login') => 'shop_name'])
-            ->setTo(App::$app->getProperty('user_email'))
+        $message_client = (new Swift_Message("Вы совершили заказ №{$order_id} на сайте" . App::$app->getProperty('shop_name')))
+            ->setFrom([App::$app->getProperty('smtp_login') => App::$app->getProperty('shop_name')])
+            ->setTo($user_email)
             ->setBody($body, 'text/html');
 
 
         // письмо для администратора
-        $message_admin = (new Swift_Message("Заказ №{$order_id}"))
-            ->setFrom([App::$app->getProperty('smtp_login') => 'shop_name'])
+        $message_admin = (new Swift_Message("Сделан заказ №{$order_id}"))
+            ->setFrom([App::$app->getProperty('smtp_login') => App::$app->getProperty('shop_name')])
             ->setTo(App::$app->getProperty('admin_email'))
             ->setBody($body, 'text/html');
 
 
         // Send the message
         $result = $mailer->send($message_client);
+        // var_dump($result);
+
         // Send the message
         $result = $mailer->send($message_admin);
 
