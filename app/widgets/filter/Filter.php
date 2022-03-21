@@ -2,7 +2,63 @@
 
 namespace app\widgets\filter;
 
+use ishop\Cache;
 
 class Filter
 {
+    //нам потребуются два свойства
+    public $groups; // отвечает за группы
+    public $attrs;  // отвечает за атрибуты
+    public $tpl;    // путь к шаблону
+
+    public function __construct()
+    {
+        $this->tpl = __DIR__ . '\filter_tpl.php'; // путь к шаблону
+        $this->run();
+    }
+
+
+    protected function run()
+    {
+        $cache = Cache::instance();
+        $this->groups = $cache->get('filter_group');  // по ключу 'filter_group' 
+
+        // если ничего не получили из КЭШа
+        if (!$this->groups) {
+
+            $this->groups = $this->getGroups(); // значит должны получить из БД 
+            $cache->set('filter_group', $this->groups, 1); // и за КЭШировать
+
+        }
+
+
+        $this->attrs = $cache->get('filter_attrs');
+
+        if (!$this->attrs) {
+
+            $this->attrs = $this->getAttrs(); // значит должны получить из БД 
+            $cache->set('filter_attrs', $this->attrs, 1); // и за КЭШировать
+
+        }
+        // debug($this->groups);
+        // debug($this->attrs);
+    }
+
+    protected function getGroups()
+    {
+        return \R::getAssoc('SELECT id, title FROM attribute_group');
+    }
+
+    protected function getAttrs()
+    {
+        $data = \R::getAssoc('SELECT * FROM attribute_value');
+
+        // для вывода фильтров
+        $attrs = [];
+        foreach ($data as $k => $v) {
+            $attrs[$v['attr_group_id']][$k] = $v['value'];
+        }
+
+        return $attrs;
+    }
 }
