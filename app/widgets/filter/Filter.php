@@ -13,7 +13,7 @@ class Filter
 
     public function __construct()
     {
-        $this->tpl = __DIR__ . '\filter_tpl.php'; // путь к шаблону
+        $this->tpl = __DIR__ . '/filter_tpl.php'; // путь к шаблону
         $this->run();
     }
 
@@ -42,7 +42,22 @@ class Filter
         }
         // debug($this->groups);
         // debug($this->attrs);
+
+        $filters = $this->getHtml();
+        echo $filters;
     }
+
+
+
+    // метод для получения HTML кода 
+    protected function getHtml()
+    {
+        ob_start(); // буферизация
+        require $this->tpl; //подключаем шаблон
+
+        return ob_get_clean(); // возвращаем данные их буфера, очищая этот самый буфер
+    }
+
 
     protected function getGroups()
     {
