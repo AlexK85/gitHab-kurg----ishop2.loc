@@ -306,6 +306,7 @@
 	</div><!-- /.modal -->
 
 
+	<div class="preloader"><img src="images/ring.svg" alt=""></div>
 
 
 	<?php $curr = \ishop\App::$app->getProperty('currency'); ?>

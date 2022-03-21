@@ -27,7 +27,7 @@ class Filter
         if (!$this->groups) {
 
             $this->groups = $this->getGroups(); // значит должны получить из БД 
-            $cache->set('filter_group', $this->groups, 1); // и за КЭШировать
+            $cache->set('filter_group', $this->groups, 30); // и за КЭШировать
 
         }
 
@@ -37,7 +37,7 @@ class Filter
         if (!$this->attrs) {
 
             $this->attrs = $this->getAttrs(); // значит должны получить из БД 
-            $cache->set('filter_attrs', $this->attrs, 1); // и за КЭШировать
+            $cache->set('filter_attrs', $this->attrs, 30); // и за КЭШировать
 
         }
         // debug($this->groups);
