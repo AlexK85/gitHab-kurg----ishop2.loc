@@ -1,3 +1,47 @@
+/*Filters*/
+
+
+$('body').on('change', '.w_sidebar input', function(){
+    var checked = $('.w_sidebar input:checked')
+        data = '';
+    checked.each(function () {
+        data += this.value + ',';
+    });
+    // console.log(data);
+    if (data) {
+        // alert(data);
+        $.ajax({
+            url: location.href, 
+            data: {filter: data}, // на сервер быдем отправлять переменную filter с значением, которое лежит в переменной data
+            type: 'GET',    // метод передачаи
+            beforeSend: function () {  // перед отправкой запроса включим ПРЕЛОУДЕР
+                $('.preloader').fadeIn(300, function() { // покажем ПРЕЛОУДЕР с помощью fadeIn
+                    $('.product-one').hide();  // обратимся к product-one и скроем товары методом 
+                });
+            },
+            success: function(res) {
+                //обратимся к ПРЕЛОУДЕР и сделаем задержку пол секунды и скроем ПРЕЛОУДЕР медленно
+                $('.preloader').delay(500).fadeOut('slow', function() {
+                    // обратимся к product-one в него нужно методом html() подгрудить ответ, который пришёл с сервера и далее всё это дело показать fadeIn()
+                    $('.product-one').html(res).fadeIn() ; 
+                });  
+                // console.log(res);
+            },
+            error: function(res) {
+                alert('Ошибка!');
+            }
+        });
+    } else {
+        window.location = location.pathname; //если пользователь снял все галочки, то нужно перезапросить страницу
+    }
+    
+});
+
+
+/*Filters*/
+
+
+
 /*Search*/
 
     var products = new Bloodhound({

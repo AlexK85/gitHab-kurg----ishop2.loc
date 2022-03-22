@@ -3357,7 +3357,7 @@ form .has-error .form-control {
   z-index: 9999;
   background-color: #fefefe;
   opacity: 0.5;
-  /* display: none; */
+  display: none;
 }
 
 .preloader img {
