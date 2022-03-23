@@ -23,7 +23,14 @@ $('body').on('change', '.w_sidebar input', function(){
                 //обратимся к ПРЕЛОУДЕР и сделаем задержку пол секунды и скроем ПРЕЛОУДЕР медленно
                 $('.preloader').delay(500).fadeOut('slow', function() {
                     // обратимся к product-one в него нужно методом html() подгрудить ответ, который пришёл с сервера и далее всё это дело показать fadeIn()
-                    $('.product-one').html(res).fadeIn() ; 
+                    $('.product-one').html(res).fadeIn(); 
+                    // обращаемся к объекту location к его методу search из него удаляем filter и дальше что угодно до знака & либо до конца строки
+                    var url = location.search.replace(/filter(.+?)(&|$)/g, '');
+                    //
+                    var newURL = location.pathname + url + (location.search ? "&" :  "?") + "filter=" + data;
+                    newURL = newURL.replace('&&', '&'); // два & заменяем одним
+                    newURL = newURL.replace('?&', '?'); // 
+                    history.pushState({}, '', newURL); // pushState отправляет newURL - обновляет состояние url, добавляя в него или заменяя его тем, что хранится в newURL
                 });  
                 // console.log(res);
             },
