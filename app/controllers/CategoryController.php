@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Breadcrumbs;
 use app\models\Category;
+use app\widgets\filter\Filter;
 use ishop\App;
 use ishop\libs\Pagination;
 
@@ -52,8 +53,14 @@ class CategoryController extends AppController
         $perpage = App::$app->getProperty('pagination');
 
 
+        if (!empty($_GET['filter'])) {
+            // $filter = $_GET['filter'];
+            $filter = Filter::getFilter();
+        }
+
+
         if ($this->isAjax()) {
-            debug($_GET);
+            debug($filter);
             die;
         }
 
