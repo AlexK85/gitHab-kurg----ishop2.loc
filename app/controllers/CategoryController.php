@@ -53,19 +53,30 @@ class CategoryController extends AppController
         $perpage = App::$app->getProperty('pagination');
 
 
+        $sql_part = '';
+
         if (!empty($_GET['filter'])) {
             // $filter = $_GET['filter'];
+
+            // формирование SQL запроса 
+            /* 
+            SELECT product .* FROM product WHERE category_id IN (6) AND id IN
+            (
+                SELECT product_id FROM attribute_product WHERE attr_id IN (1,5)
+            )
+            */
             $filter = Filter::getFilter();
+            $sql_part = "AND id IN (SELECT product_id FROM attribute_product WHERE attr_id IN ($filter))";
         }
 
 
-        if ($this->isAjax()) {
-            debug($filter);
-            die;
-        }
+        // if ($this->isAjax()) {
+            // debug($filter);
+        //     die;
+        // }
 
 
-        $total = \R::count('product', "category_id IN ($ids)");
+        $total = \R::count('product', "category_id IN ($ids) $sql_part");
         $pagination = new Pagination($page, $perpage, $total);
         // С какой записи начинать выбирать
         $start = $pagination->getStart();
@@ -75,8 +86,14 @@ class CategoryController extends AppController
 
 
         // получаем продукты
-        $products = \R::find('product', "category_id IN ($ids) LIMIT $start, $perpage");
+        $products = \R::find('product', "category_id IN ($ids) $sql_part LIMIT $start, $perpage");
         // debug($products);
+
+
+        if ($this->isAjax()) {
+           $this->loadView('filter', compact('products', 'total', 'pagination'));
+        }
+
 
         // передадим теперь все данные в ВИД
         $this->setMeta($category->title, $category->description, $category->keywords);
