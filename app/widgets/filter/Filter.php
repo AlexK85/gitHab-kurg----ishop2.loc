@@ -36,7 +36,7 @@ class Filter
 
         if (!$this->attrs) {
 
-            $this->attrs = $this->getAttrs(); // значит должны получить из БД 
+            $this->attrs = self::getAttrs(); // значит должны получить из БД 
             $cache->set('filter_attrs', $this->attrs, 30); // и за КЭШировать
 
         }
@@ -71,7 +71,8 @@ class Filter
         return \R::getAssoc('SELECT id, title FROM attribute_group');
     }
 
-    protected function getAttrs()
+
+    protected static function getAttrs()
     {
         $data = \R::getAssoc('SELECT * FROM attribute_value');
 
@@ -96,5 +97,20 @@ class Filter
             $filter = trim($filter, ','); // обрежит по бокам запятую
         }
         return $filter; // если условие не сработает, то вернётся null
+    }
+
+
+    public static function getCountGroups($filter)
+    {
+        // получим массив из строки
+        $filters = explode(',', $filter);
+        $cache = Cache::instance();
+        $attrs = $cache->get('filter_attrs');
+        //если у КЭШе нет атрибутов
+        if (!$attrs) {
+            $attrs = self::getAttrs();
+        }
+        debug($filters);
+        debug($attrs);
     }
 }
