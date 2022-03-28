@@ -83,8 +83,8 @@ class Filter
         $filter = null;
         if (!empty($_GET['filter'])) {
             // нас интересует что бы в строке были только цифры и запятыи
-            $filter = preg_replace("#[^\d,]#", '', $_GET['filter']);
-            // далее обрежим запятую в конце
+            $filter = preg_replace("#[^\d,]+#", '', $_GET['filter']);
+            // далее обрежим запятую в конце  
             $filter = trim($filter, ','); // обрежит по бокам запятую
         }
         return $filter; // если условие не сработает, то вернётся null

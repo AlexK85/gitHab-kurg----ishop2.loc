@@ -24,7 +24,7 @@ $('body').on('change', '.w_sidebar input', function(){
                 $('.preloader').delay(500).fadeOut('slow', function() {
                     // обратимся к product-one в него нужно методом html() подгрудить ответ, который пришёл с сервера и далее всё это дело показать fadeIn()
                     $('.product-one').html(res).fadeIn(); 
-                    // обращаемся к объекту location к его методу search из него удаляем filter и дальше что угодно до знака & либо до конца строки
+                    // обращаемся к объекту location к его методу search из него удаляем filter и дальше что угодно до знака & либо до конца строки 
                     var url = location.search.replace(/filter(.+?)(&|$)/g, '');
                     //
                     var newURL = location.pathname + url + (location.search ? "&" :  "?") + "filter=" + data;

@@ -66,32 +66,41 @@ class CategoryController extends AppController
             )
             */
             $filter = Filter::getFilter();
+            // debug($filter);
+            // die;
             $sql_part = "AND id IN (SELECT product_id FROM attribute_product WHERE attr_id IN ($filter))";
+            // debug($filter);
+            // die;
         }
 
 
-        // if ($this->isAjax()) {
-            // debug($filter);
+        // if ($this->isAjax()) {  
+        // debug($filter);
         //     die;
         // }
 
 
         $total = \R::count('product', "category_id IN ($ids) $sql_part");
+        // debug($total);
+        // die;
+
         $pagination = new Pagination($page, $perpage, $total);
         // С какой записи начинать выбирать
         $start = $pagination->getStart();
 
-        // var_dump($pagination);
+        // var_dump($pagination); 
         // echo $pagination;
 
 
         // получаем продукты
         $products = \R::find('product', "category_id IN ($ids) $sql_part LIMIT $start, $perpage");
         // debug($products);
+        // die;
 
 
         if ($this->isAjax()) {
-           $this->loadView('filter', compact('products', 'total', 'pagination'));
+            // передаём наименование вида и передаём некие переменные в данный вид  
+            $this->loadView('filter', compact('products', 'total', 'pagination'));
         }
 
 
