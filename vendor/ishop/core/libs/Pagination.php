@@ -27,7 +27,7 @@ class Pagination
     {
         $this->perpage = $perpage;
         $this->total = $total;
-        $this->countPages = $this->getCountPages(); 
+        $this->countPages = $this->getCountPages();
         $this->currentPage = $this->getCurrentPage($page);
         $this->uri = $this->getParams();
         // var_dump($this->uri);
@@ -80,7 +80,7 @@ class Pagination
         return $this->getHtml();
     }
 
- 
+
     // получает общее количество страниц
     public function getCountPages()
     {
@@ -105,6 +105,14 @@ class Pagination
     public function getParams()
     {
         $url = $_SERVER['REQUEST_URI'];
+
+        // выполним глобальный поиск в строке
+        preg_match_all("#filter=[\d,&]#", $url, $matches);
+        // если количество элементов массива больше чем 1 
+        if (count($matches[0]) > 1) {
+            $url = preg_replace("#filter=[\d,&]+#", "", $url, 1);
+        }
+
         // нужны явные GET параметры. Разобьём строку на ? знаки
         $url = explode('?', $url);
         // debug($url);
