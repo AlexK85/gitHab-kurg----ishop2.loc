@@ -53,6 +53,13 @@ class Filter
     protected function getHtml()
     {
         ob_start(); // буферизация
+
+        // возвращает строку через запятую с фильтрами
+        $filter = self::getFilter();
+        if (!empty($filter)) {
+            $filter = explode(',', $filter);
+        }
+
         require $this->tpl; //подключаем шаблон
 
         return ob_get_clean(); // возвращаем данные их буфера, очищая этот самый буфер
@@ -78,6 +85,7 @@ class Filter
     }
 
     // для обработки переменной $filter
+    // возвращает строку через запятую с фильтрами
     public static function getFilter()
     {
         $filter = null;
