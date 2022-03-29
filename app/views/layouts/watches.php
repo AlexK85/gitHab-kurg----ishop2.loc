@@ -6,8 +6,9 @@
 	<!-- <title>Luxury Watches A Ecommerce Category Flat Bootstrap Resposive Website Template | Home :: w3layouts</title> -->
 	<base href="/ishop2.loc/">
 
-	<?= $this->getMeta(); ?>
+	<link rel="shortcut icon" href="images/icons.png" type="image/png" />
 
+	<?= $this->getMeta(); ?>
 
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- <link href="css/bootstrap.css.map" rel="stylesheet" type="text/css" media="all" /> -->
