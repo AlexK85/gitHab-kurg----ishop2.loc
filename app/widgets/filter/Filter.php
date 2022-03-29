@@ -110,7 +110,19 @@ class Filter
         if (!$attrs) {
             $attrs = self::getAttrs();
         }
-        debug($filters);
-        debug($attrs);
+        $data = [];
+        foreach ($attrs as $key => $item) {
+            foreach ($item as $k => $v) {
+                //если есть в массиве $k
+                if (in_array($k, $filters)) {
+                    $data[] = $key;
+                    break;
+                }
+            }
+        }
+        return count($data);
+        // debug($data);
+        // debug($filters);
+        // debug($attrs);
     }
 }
